@@ -921,7 +921,11 @@ public class FurnitureTable extends JTable implements View, Printable {
           case HEIGHT : 
             writer.write(sizeFormat.format(copiedPiece.getHeight()));
             break;
-          // My Task 3:: no volume here cuz we dont keep when exporting
+          // My Task 3:: no volume here cuz we dont keep when exporting saves
+          // nvm actually this isnt the save this is csv
+          case VOLUME :
+            writer.write(sizeFormat.format(copiedPiece.getVolume()));
+            break;
           case X : 
             writer.write(sizeFormat.format(copiedPiece.getX()));
             break;
