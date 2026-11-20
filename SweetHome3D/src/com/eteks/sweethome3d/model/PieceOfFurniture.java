@@ -53,6 +53,12 @@ public interface PieceOfFurniture {
   public abstract float getHeight();
 
   /**
+   * My Task 3
+   * Returns the volume of this piece of furniture.
+   */
+  public abstract float getVolume();
+
+  /**
    * Returns the width of this piece of furniture.
    */
   public abstract float getWidth();
