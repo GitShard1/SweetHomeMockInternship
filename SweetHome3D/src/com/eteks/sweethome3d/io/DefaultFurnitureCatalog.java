@@ -161,13 +161,19 @@ public class DefaultFurnitureCatalog extends FurnitureCatalog {
      */
     HEIGHT("height"),
     /**
+     * The key for the volume in centimeters^3 of a piece of furniture.
+     * My Task 3.
+     */
+    VOLUME("volume"),
+
+    /**
      * The key for the movability of a piece of furniture (mandatory).
      * If the value of this key is <code>true</code>, the piece of furniture
      * will be considered as a movable piece. 
      */
     MOVABLE("movable"),
     /**
-     * The key for the door or window type of a piece of furniture (mandatory).
+     * The key for the door or winAdow type of a piece of furniture (mandatory).
      * If the value of this key is <code>true</code>, the piece of furniture
      * will be considered as a door or a window. 
      */

@@ -373,6 +373,9 @@ public class HomeXMLExporter extends ObjectXMLExporter<Home> {
       writer.writeFloatAttribute("width", piece.getWidth());
       writer.writeFloatAttribute("depth", piece.getDepth());
       writer.writeFloatAttribute("height", piece.getHeight());
+      // My Task 3
+      writer.writeFloatAttribute("volume", piece.getHeight());
+
       writer.writeBooleanAttribute("backFaceShown", piece.isBackFaceShown(), false);
       writer.writeBooleanAttribute("modelMirrored", piece.isModelMirrored(), false);
       writer.writeBooleanAttribute("visible", piece.isVisible(), true);

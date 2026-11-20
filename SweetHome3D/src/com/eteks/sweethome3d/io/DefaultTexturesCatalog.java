@@ -92,6 +92,7 @@ public class DefaultTexturesCatalog extends TexturesCatalog {
      * The key for the height in centimeters of a texture (mandatory).
      */
     HEIGHT("height"),
+    // My Task 3: This is for TEXTURES: you lookin for Volume at the wrong place
     /**
      * The key for the creator of a texture (optional).
      * By default, creator is <code>null</code>.

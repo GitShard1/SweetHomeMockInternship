@@ -265,6 +265,7 @@ public class HomeFurnitureGroup extends HomePieceOfFurniture {
           || HomePieceOfFurniture.Property.ANGLE.name().equals(ev.getPropertyName())
           || HomePieceOfFurniture.Property.WIDTH.name().equals(ev.getPropertyName())
           || HomePieceOfFurniture.Property.DEPTH.name().equals(ev.getPropertyName())
+          // My Task 3: Prob dont need volume here since width/depth/height already here
           || HomePieceOfFurniture.Property.HEIGHT.name().equals(ev.getPropertyName())) {
         group.updateLocationAndSize(group.getFurniture(), group.getAngle(), false);
       }
