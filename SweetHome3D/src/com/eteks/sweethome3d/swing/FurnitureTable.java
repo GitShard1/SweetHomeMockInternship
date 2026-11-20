@@ -126,6 +126,7 @@ public class FurnitureTable extends JTable implements View, Printable {
   private static final String EXPANDED_ROWS_VISUAL_PROPERTY = "com.eteks.sweethome3d.SweetHome3D.ExpandedGroups";
 
   private UserPreferences        preferences;
+  private Home                   home; // My Task 4: needed to know if home has levels when printing
   private ListSelectionListener  tableSelectionListener;
   private boolean                selectionByUser;
   private int                    furnitureInformationRow;
@@ -148,6 +149,7 @@ public class FurnitureTable extends JTable implements View, Printable {
   public FurnitureTable(Home home, UserPreferences preferences, 
                        FurnitureController controller) {
     this.preferences = preferences;
+    this.home = home;
     float resolutionScale = SwingTools.getResolutionScale();
     if (resolutionScale != 1) {
       // Adapt row height to specified resolution scale
@@ -750,8 +752,21 @@ public class FurnitureTable extends JTable implements View, Printable {
           return headerRendererLabel;
         }
       };
+    // My Task 4: columns to print = the on-screen columns + Level at the end if its not shown
+    // (only add to the printed copy, so the displkayed table doesn't change)
+    List<TableColumn> printedColumns = new ArrayList<TableColumn>();
     for (int columnIndex = 0, n = columnModel.getColumnCount(); columnIndex < n; columnIndex++) {
-      final TableColumn tableColumn = columnModel.getColumn(columnIndex);
+      printedColumns.add(columnModel.getColumn(columnIndex));
+    }
+
+    boolean homeHasLevels = !this.home.getLevels().isEmpty();
+    boolean levelColumnShown = this.home.getFurnitureVisibleProperties().contains(HomePieceOfFurniture.SortableProperty.LEVEL);
+    if (homeHasLevels && !levelColumnShown && columnModel instanceof FurnitureTableColumnModel) {
+      TableColumn levelColumn = ((FurnitureTableColumnModel)columnModel).availableColumns.get(HomePieceOfFurniture.SortableProperty.LEVEL);
+      printedColumns.add(levelColumn);
+    }
+
+    for (final TableColumn tableColumn : printedColumns) {
       // Create a printable column from existing table column
       TableColumn printableColumn = new TableColumn();
       printableColumn.setIdentifier(tableColumn.getIdentifier());

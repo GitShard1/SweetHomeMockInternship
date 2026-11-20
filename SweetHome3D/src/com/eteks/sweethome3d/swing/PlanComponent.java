@@ -2013,7 +2013,7 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
     // My Task 4: one plan page / set of pages per level that is viewable
     List<Level> levels = this.home.getLevels();
     if (levels.isEmpty()) {
-      return printSelectedLevel(g, pageFormat, pageIndex);
+      return printThisLevel(g, pageFormat, pageIndex);
     }
 
     // Selecting another level is temp state :: will be restored after
@@ -2027,7 +2027,7 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
           this.home.setSelectedLevel(level);
           int levelPageCount = getSelectedLevelPrintPageCount(g, pageFormat);
           if (levelPageIndex < levelPageCount) {
-            return printSelectedLevel(g, pageFormat, levelPageIndex);
+            return printThisLevel(g, pageFormat, levelPageIndex);
           }
           levelPageIndex -= levelPageCount;
         }
@@ -2035,6 +2035,8 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
       return NO_SUCH_PAGE;
 
     } finally {
+      // Then when done, restore as assignemnt needs it
+      // "Printing must restore the level that was selected before printing"
       this.home.setSelectedLevel(oldSelectedLevel);
       if (!this.home.getSelectedItems().equals(oldSelectedItems)) {
         this.home.setSelectedItems(oldSelectedItems);
@@ -2046,6 +2048,7 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
   /**
    * My Task 4
    * Directly copied from printSelectedLevel(Graphics, PageFormat, int).
+   * actually its now printThisLevel
    */
   private int getSelectedLevelPrintPageCount(Graphics g, PageFormat pageFormat) {
     Rectangle2D printedItemBounds = getItemsBounds(g, getPaintedItems());
@@ -2075,9 +2078,9 @@ public class PlanComponent extends JComponent implements PlanView, Scrollable, P
 
   /**
    * Prints the plan of the selected level only (the original single-level print).
-   * My Task 4: renamed from print so print can call it once per level.
+   * My Task 4: mini-refactor. Works for every level
    */
-  private int printSelectedLevel(Graphics g, PageFormat pageFormat, int pageIndex) {
+  private int printThisLevel(Graphics g, PageFormat pageFormat, int pageIndex) {
     List<Selectable> printedItems = getPaintedItems();
     Rectangle2D printedItemBounds = getItemsBounds(g, printedItems);
     if (printedItemBounds != null) {
