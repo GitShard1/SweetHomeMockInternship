@@ -374,7 +374,10 @@ public class HomeXMLExporter extends ObjectXMLExporter<Home> {
       writer.writeFloatAttribute("depth", piece.getDepth());
       writer.writeFloatAttribute("height", piece.getHeight());
       // My Task 3
-      writer.writeFloatAttribute("volume", piece.getVolume());
+      /* REMOVED: this is actually the save system, no exporting volume needed
+       due to me changing it now to calculate at runtime
+       */
+      // writer.writeFloatAttribute("volume", piece.getVolume());
 
       writer.writeBooleanAttribute("backFaceShown", piece.isBackFaceShown(), false);
       writer.writeBooleanAttribute("modelMirrored", piece.isModelMirrored(), false);

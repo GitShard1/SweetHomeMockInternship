@@ -163,8 +163,9 @@ public class DefaultFurnitureCatalog extends FurnitureCatalog {
     /**
      * The key for the volume in centimeters^3 of a piece of furniture.
      * My Task 3.
-     */
+     * REMOVED : NOT STORING AS FIELD ANYMORE
     VOLUME("volume"),
+    */
 
     /**
      * The key for the movability of a piece of furniture (mandatory).

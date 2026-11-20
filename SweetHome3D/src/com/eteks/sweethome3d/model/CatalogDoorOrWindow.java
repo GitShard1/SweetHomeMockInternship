@@ -381,7 +381,8 @@ public class CatalogDoorOrWindow extends CatalogPieceOfFurniture implements Door
    * @param width  the width in centimeters of the new door or window
    * @param depth  the depth in centimeters of the new door or window
    * @param height  the height in centimeters of the new door or window
-   * @param volume  (Task 3) the volume in centimeters^3 of the new door or window
+   //* @param volume  (Task 3) the volume in centimeters^3 of the new door or window
+   // actually im not storing it as a field anymore
    * @param elevation  the elevation in centimeters of the new door or window
    * @param movable if <code>true</code>, the new door or window is movable
    * @param wallThickness a value in percentage of the depth of the new door or window
